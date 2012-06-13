@@ -1,0 +1,32 @@
+# OSX
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# .gitignore
+.gitignore
+
+# vim
+.*.sw[a-z]
+*.un~
+Session.vim
+
+# ruby
+*.gem
+*.rbc
+.bundle
+.config
+.yardoc
+Gemfile.lock
+InstalledFiles
+_yardoc
+coverage
+doc/
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
