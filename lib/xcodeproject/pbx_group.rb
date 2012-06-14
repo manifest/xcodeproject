@@ -13,6 +13,14 @@ module XcodeProject
 			@children.map {|uuid| root.object!(uuid)}
 		end
 
+		def groups
+			children.select {|child| child.is_a?(PBXGroup) }
+		end
+
+		def files
+			children.select {|child| child.is_a?(PBXFileReference) }
+		end
+
 		def child (gpath)
 			gpath = Pathname.new(gpath).cleanpath
 			

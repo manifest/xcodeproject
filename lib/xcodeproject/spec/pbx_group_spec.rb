@@ -21,6 +21,50 @@ describe XcodeProject::PBXGroup do
 		end
 	end
 
+	describe "#files" do
+		context "if children exists" do
+			it "Returns an array of only those children who are files" do
+				chs = obj.files
+				chs.should be_an_instance_of(Array)
+				chs.size.should > 0
+				chs.each do |child|
+					child.should be_an_instance_of(XcodeProject::PBXFileReference)
+				end
+			end
+		end
+		context "if children doesn't exist" do
+			let(:obj) { root.project.main_group.group("group1a/dir2c") }
+
+			it "returns an empty array" do
+				chs = obj.files
+				chs.should be_an_instance_of(Array)
+				chs.size.should eql(0)
+			end
+		end
+	end
+
+	describe "#groups" do
+		context "if children exists" do
+			it "Returns an array of only those children who are group" do
+				chs = obj.groups
+				chs.should be_an_instance_of(Array)
+				chs.size.should > 0
+				chs.each do |child|
+					child.should be_an_instance_of(XcodeProject::PBXGroup)
+				end
+			end
+		end
+		context "if children doesn't exist" do
+			let(:obj) { root.project.main_group.group("group1a/dir2c/dir3a/dir4a") }
+
+			it "returns an empty array" do
+				chs = obj.groups
+				chs.should be_an_instance_of(Array)
+				chs.size.should eql(0)
+			end
+		end
+	end
+
 	describe "#child" do
 		context "if passed '.'" do
 			it "returns the self" do
