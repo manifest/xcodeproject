@@ -1,3 +1,3 @@
-module Xcodeproject
-  VERSION = "0.2.2"
+module XcodeProject
+  VERSION = "0.2.3"
 end

@@ -3,9 +3,9 @@ require File.expand_path('../lib/xcodeproject/version', __FILE__)
 
 Gem::Specification.new do |gem|
 	gem.name              = 'xcodeproject'
-	gem.version           = Xcodeproject::VERSION
+	gem.version           = XcodeProject::VERSION
 	gem.summary           = 'Read, write and build xcode projects'
-	gem.description       = 'XCodeProject is Ruby API for working with Xcode project files'
+	gem.description       = 'XcodeProject is Ruby API for working with Xcode project files'
 	gem.author            = 'Andrey Nesterov'
 	gem.email             = 'ae.nesterov@gmail.com'
 	gem.homepage          = 'https://github.com/manifest/xcodeproject'
@@ -22,5 +22,7 @@ Gem::Specification.new do |gem|
 	gem.add_runtime_dependency 'uuid', '~> 2.3'
 	gem.add_development_dependency 'rspec', '~> 2.10'
 	gem.add_development_dependency 'rr', '~> 1.0'
+	gem.add_development_dependency 'redcarpet', '~> 1.17'
+	gem.add_development_dependency 'yard', '~> 0.7'
 end
 

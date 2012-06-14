@@ -1,4 +1,4 @@
-XCodeProject
+XcodeProject
 ===
 Ruby API for working with Xcode project files
 
@@ -24,44 +24,102 @@ First, you must create an XcodeProject::Project object like this:
 
 Or you can find all projects are located in the specified directory:
 
-	projs = XCodeProject::Project.find_projs('path/to/dir')
+	projs = XcodeProject::Project.find_projs('path/to/dir')
 
 After creating the project object, you can read the data from it:
 
-	proj = XcodeProject::Project.new('path/to/example.xcodeproj')
 	data = proj.read
 	p data.target('example').config('Release').build_settings
 
 Or rewrite data:
 
-	proj = XcodeProject::Project.new('path/to/example.xcodeproj')
 	proj.change do |data|
 		data.target('example').config('Release').build_settings['GCC_VERSION'] = 'com.apple.compilers.llvmgcc42'
 	end
 
-Build the project
+Files, groups and directories
+---
+Displaying all of top-level groups:
+
+	data.main_group.children.each do |child|
+	  p child.name
+	end
+
+Displaying files of specified group:
+
+	group = data.group('path/from/main_group')
+	group.files.each do |file|
+		p file.name
+	end
+
+You can get group's (or file's) group path (the path from the main group):
+
+	group.group_path
+
+Directories are groups that are explicitly represented in the file system. For them, you can also get a file path:
+
+	group.total_path
+
+You can add a group to project by specifying the path from the main group:
+
+	data.add_group('path/from/main_group')
+
+Or from the current group:
+	
+	group.add_group('path/from/current_group')
+
+To add a directory to the project, you must specify the file path to it:
+
+	data.add_dir('group_path/to/parent', '/file_path/to/dir')
+	group.add_dir('/file_path/to/dir')
+
+Adding files are same:
+
+	data.add_file('group_path/to/parent', '/file_path/to/file')
+	group.add_file('/file_path/to/file')
+
+You can also remove files, groups and directories from the project:
+
+	data.remove_file('path/from/main_group')
+	data.remove_group('path/from/main_group')
+
+	group.remove_file('path/from/current_group')
+	group.remove_group('path/from/current_group')
+
+Targets
+---
+Getting the target object is simple:
+
+	target = data.target('example')
+
+After adding a file to the project, you can add it to target's build phase:
+
+	file = main_group.add_file('/file_path/to/file')
+	target.add_source(file)
+
+Or remove from target's build phase:
+
+	target.remove_source(file)
+
+Building the project
 ---
 XcodeProject uses XcodeBuilder for building projects
 
 Building the project:
 
-	proj = XcodeProject::Project.new('example/example.xcodeproj')
 	proj.build
 
 Cleaning the project:
 
-	proj = XcodeProject::Project.new('example/example.xcodeproj')
 	proj.clean
 
 Archiving the project:
 
-	proj = XcodeProject::Project.new('example/example.xcodeproj')
 	proj.builder.scheme = 'example'
 	proj.archive
 
 You can specify options for builder:
 
-	proj = XcodeProject::Project.new('example/example.xcodeproj')
 	proj.builder.configuration = 'Debug'
 	proj.builder.arch = 'armv7'
 	proj.build
@@ -70,7 +128,7 @@ You can find out more about XcodeBuilder [here][xcodebuilder].
 
 License
 ---
-XCodeProject is provided under the terms of the [the MIT license][license]
+XcodeProject is provided under the terms of the [the MIT license][license]
 
 [xcodebuilder]:https://github.com/lukeredpath/xcodebuild-rb
 [license]:http://www.opensource.org/licenses/MIT
