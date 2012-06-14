@@ -1,4 +1,4 @@
-module XCodeProject
+module XcodeProject
 	class Formatter
 		def initialize
 			@counter = 0

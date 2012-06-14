@@ -22,7 +22,7 @@
 
 require 'xcodeproject/root_node'
 
-module XCodeProject
+module XcodeProject
 	class Data
 		def initialize (data, wd)
 			@root = RootNode.new(data, wd)

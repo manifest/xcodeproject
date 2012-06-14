@@ -1,4 +1,4 @@
-module XCodeProject
+module XcodeProject
 	class Node
 		attr_reader :uuid
 		attr_reader :isa

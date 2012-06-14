@@ -1,19 +1,19 @@
 require "spec_helper"
 
-describe XCodeProject::Project do
+describe XcodeProject::Project do
 	let(:proj) { prepare_example_project }
 
 	describe "#new" do
 		context "if the project file exists" do
 			it "constructs an project object" do
-				XCodeProject::Project.new(example_project_bundle_path).should be_an_instance_of(XCodeProject::Project)
+				XcodeProject::Project.new(example_project_bundle_path).should be_an_instance_of(XcodeProject::Project)
 			end
 		end
 
 		context "if the project file doesn't exist" do
 			let(:proj_ne) { "#{example_empty_sandbox_path}/ghost.xcodeproj" }
 			it "trows the exception" do
-				lambda { XCodeProject::Project.new(proj_ne) }.should raise_exception(XCodeProject::FilePathError)
+				lambda { XcodeProject::Project.new(proj_ne) }.should raise_exception(XcodeProject::FilePathError)
 			end
 		end
 	end
@@ -33,7 +33,7 @@ describe XCodeProject::Project do
 	describe "#find_projs" do
 		context "if a path contains project files" do
 			it "returns an array of project objects" do
-				projs = XCodeProject::Project.find_projs(example_sandbox_path)
+				projs = XcodeProject::Project.find_projs(example_sandbox_path)
 				projs.size.should eql(1)
 				projs.first.bundle_path.should eql(proj.bundle_path)
 			end
@@ -41,7 +41,7 @@ describe XCodeProject::Project do
 
 		context "if a path doesn't contain project files" do
 			it "returns an empty array" do
-				projs = XCodeProject::Project.find_projs(example_empty_sandbox_path)
+				projs = XcodeProject::Project.find_projs(example_empty_sandbox_path)
 				projs.size.should eql(0)
 			end
 		end
@@ -49,7 +49,7 @@ describe XCodeProject::Project do
 
 	describe "#read" do
 		it "returns the data object" do
-			proj.read.should be_an_instance_of(XCodeProject::Data)
+			proj.read.should be_an_instance_of(XcodeProject::Data)
 		end
 
 		it "reads the project file" do
@@ -71,7 +71,7 @@ describe XCodeProject::Project do
 		it "reads the file file and then writes it" do
 			proj_mock = mock.proxy(proj)
 			proj_mock.read
-			proj_mock.write(is_a(XCodeProject::Data))
+			proj_mock.write(is_a(XcodeProject::Data))
 			proj.change {|data| }
 		end
 	end

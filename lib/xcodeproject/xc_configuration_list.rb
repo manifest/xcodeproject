@@ -1,6 +1,6 @@
 require 'xcodeproject/node'
 
-module XCodeProject
+module XcodeProject
 	class XCConfigurationList < Node
 		attr_reader :default_configuration_name
 		attr_reader :default_configuration_is_visible

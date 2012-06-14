@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe XCodeProject::BuildPhaseNode do
+describe XcodeProject::BuildPhaseNode do
 	let(:root)       { prepare_example_project.read.send(:root) }
 	let(:file_ref)   { root.project.main_group.file_ref('group1a/file2c.m') }
 	let(:build_file) { root.project.target('example').sources_build_phase.send(:build_file, file_ref.uuid) }
@@ -9,7 +9,7 @@ describe XCodeProject::BuildPhaseNode do
 	describe "#files" do
 		it "returns an array of files" do
 			obj.files.should be_an_instance_of(Array)
-			obj.files.each {|obj| obj.should be_an_instance_of(XCodeProject::PBXFileReference) }
+			obj.files.each {|obj| obj.should be_an_instance_of(XcodeProject::PBXFileReference) }
 		end
 	end
 	
@@ -56,19 +56,19 @@ describe XCodeProject::BuildPhaseNode do
 	describe "#build_files" do
 		it "returns an array of files" do
 			obj.send(:build_files).should be_an_instance_of(Array)
-			obj.send(:build_files).each {|obj| obj.should be_an_instance_of(XCodeProject::PBXBuildFile) }
+			obj.send(:build_files).each {|obj| obj.should be_an_instance_of(XcodeProject::PBXBuildFile) }
 		end
 	end
 
 	describe "#build_file" do
 		it "returns the object" do
-			obj.send(:build_file, file_ref.uuid).should be_an_instance_of(XCodeProject::PBXBuildFile)
+			obj.send(:build_file, file_ref.uuid).should be_an_instance_of(XcodeProject::PBXBuildFile)
 		end
 	end
 
 	describe "#add_build_file" do
 		it "adds the build file, returns the object" do
-			obj.send(:add_build_file, file_ref.uuid).should be_an_instance_of(XCodeProject::PBXBuildFile)
+			obj.send(:add_build_file, file_ref.uuid).should be_an_instance_of(XcodeProject::PBXBuildFile)
 		end
 	end
 

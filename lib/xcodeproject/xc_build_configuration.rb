@@ -1,6 +1,6 @@
 require 'xcodeproject/node'
 
-module XCodeProject
+module XcodeProject
 	class XCBuildConfiguration < Node
 		attr_reader :name
 		attr_accessor :build_settings

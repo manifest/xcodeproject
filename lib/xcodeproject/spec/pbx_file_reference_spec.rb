@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe XCodeProject::PBXFileReference do
+describe XcodeProject::PBXFileReference do
 	let(:root)      { prepare_example_project.read.send(:root) }
 	let(:obj_gpath) { "group1a/file2c.m" }
 	let(:obj)       { root.project.main_group.file_ref(obj_gpath) }

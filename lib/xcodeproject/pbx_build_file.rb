@@ -1,6 +1,6 @@
 require 'xcodeproject/node'
 
-module XCodeProject
+module XcodeProject
 	class PBXBuildFile < Node
 		attr_reader :file_ref
 

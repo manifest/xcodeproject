@@ -24,7 +24,7 @@ require 'xcodeproject/data'
 require 'pathname'
 require 'find'
 
-module XCodeProject
+module XcodeProject
 	class Project
 		attr_reader :bundle_path
 		attr_reader :file_path

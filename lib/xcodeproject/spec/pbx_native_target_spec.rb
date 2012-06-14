@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe XCodeProject::PBXNativeTarget do
+describe XcodeProject::PBXNativeTarget do
 	before(:each) { @data = prepare_example_project.read }
 	let(:obj)     { obj = @data.target('example') }
 
@@ -30,7 +30,7 @@ describe XCodeProject::PBXNativeTarget do
 
 	describe "#build_configurations_list" do
 		it "returns the build configuration list object" do
-			obj.build_configurations_list.should be_an_instance_of(XCodeProject::XCConfigurationList)
+			obj.build_configurations_list.should be_an_instance_of(XcodeProject::XCConfigurationList)
 		end
 	end
 

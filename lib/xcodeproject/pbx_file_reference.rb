@@ -1,7 +1,7 @@
 require 'xcodeproject/file_node'
 require 'xcodeproject/exceptions'
 
-module XCodeProject
+module XcodeProject
 	class PBXFileReference < FileNode
 		def initialize (root, uuid, data)
 			super(root, uuid, data)

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe XCodeProject::FileNode do
+describe XcodeProject::FileNode do
 	let(:data_name)      { Hash['name', 'file.name'] }
 	let(:data_path)      { Hash['path', 'path/to/file.name'] }
 	let(:data_path_name) { data_path.merge!(data_name) }
@@ -10,19 +10,19 @@ describe XCodeProject::FileNode do
 		context "if the name is initialized " do
 			it "returns the name as is" do
 				[data_name, data_path_name].each do |data|
-					XCodeProject::FileNode.new(stub, stub, data).name.should eql(data['name'])
+					XcodeProject::FileNode.new(stub, stub, data).name.should eql(data['name'])
 				end
 			end
 		end
 		context "if the name isn't initialized" do
 			context "and the path is initialized " do
 				it "returns the name as basename of the path" do
-					XCodeProject::FileNode.new(stub, stub, data_path).name.should eql(File.basename(data_path['path']))
+					XcodeProject::FileNode.new(stub, stub, data_path).name.should eql(File.basename(data_path['path']))
 				end
 			end
 			context "and the path isn't initialized" do
 				it "returns nil" do
-					XCodeProject::FileNode.new(stub, stub, data_empty).name.should be_nil
+					XcodeProject::FileNode.new(stub, stub, data_empty).name.should be_nil
 				end
 			end
 		end
@@ -32,13 +32,13 @@ describe XCodeProject::FileNode do
 		context "if the path is initialized " do
 			it "returns the path as is" do
 				[data_path, data_path_name].each do |data|
-					XCodeProject::FileNode.new(stub, stub, data_path).path.should eql(data['path'])
+					XcodeProject::FileNode.new(stub, stub, data_path).path.should eql(data['path'])
 				end
 			end
 		end
 		context "if the path isn't initialized" do
 			it "returns nil" do
-				XCodeProject::FileNode.new(stub, stub, data_empty).path.should be_nil
+				XcodeProject::FileNode.new(stub, stub, data_empty).path.should be_nil
 			end
 		end
 	end
@@ -58,7 +58,7 @@ describe XCodeProject::FileNode do
 			context "if the object is nested file node" do
 				it "returns the parent object" do
 					file_nodes_gpaths do |gpath| 
-						main_group.child(gpath).parent.should be_an_instance_of(XCodeProject::PBXGroup)
+						main_group.child(gpath).parent.should be_an_instance_of(XcodeProject::PBXGroup)
 					end
 				end
 			end

@@ -2,7 +2,7 @@ require 'xcodeproject/pbx_file_reference'
 require 'xcodeproject/exceptions'
 require 'pathname'
 
-module XCodeProject
+module XcodeProject
 	class PBXGroup < FileNode
 		def initialize (root, uuid, data)
 			super(root, uuid, data)

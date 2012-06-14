@@ -1,7 +1,7 @@
 require 'xcodeproject/xc_configuration_list'
 require 'xcodeproject/build_phase_node'
 
-module XCodeProject
+module XcodeProject
 	class PBXNativeTarget < Node
 		attr_reader :name
 		attr_reader :product_name

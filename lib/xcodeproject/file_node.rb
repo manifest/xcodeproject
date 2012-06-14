@@ -1,7 +1,7 @@
 require 'xcodeproject/node'
 require 'pathname'
 
-module XCodeProject
+module XcodeProject
 	class FileNode < Node
 		attr_reader :name
 		attr_reader :path

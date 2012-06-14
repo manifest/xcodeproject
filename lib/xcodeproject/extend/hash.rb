@@ -1,7 +1,7 @@
 require 'xcodeproject/formatter'
 
 class Hash
-	def to_plist (fmtr = XCodeProject::Formatter.new)
+	def to_plist (fmtr = XcodeProject::Formatter.new)
 		fmtr.inc
 		items = map { |key, value| "#{key.to_plist(fmtr)} = #{value.to_plist(fmtr)};" }
 		fmtr.dec

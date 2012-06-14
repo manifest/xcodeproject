@@ -31,7 +31,7 @@ require 'xcodeproject/extend/string'
 require 'xcodeproject/extend/array'
 require 'xcodeproject/extend/hash'
 
-module XCodeProject
+module XcodeProject
 	class RootNode
 		def initialize (data, wd)
 			@data, @wd = data, Pathname.new(wd)
@@ -50,7 +50,7 @@ module XCodeProject
 		
 		def object (uuid)
 			data = @objects[uuid]
-			XCodeProject.const_get(data['isa']).new(self, uuid, data) unless data.nil?
+			XcodeProject.const_get(data['isa']).new(self, uuid, data) unless data.nil?
 		end
 
 		def object! (uuid)

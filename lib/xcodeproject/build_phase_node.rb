@@ -1,7 +1,7 @@
 require 'xcodeproject/node'
 require 'xcodeproject/pbx_build_file'
 
-module XCodeProject
+module XcodeProject
 	class BuildPhaseNode < Node
 		def initialize (root, uuid, data)
 			super(root, uuid, data)

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe XCodeProject::PBXGroup do
+describe XcodeProject::PBXGroup do
 	let(:root) { prepare_example_project.read.send(:root) }
 	let(:obj)  { root.project.main_group.group('group1a') }
 
@@ -101,7 +101,7 @@ describe XCodeProject::PBXGroup do
 	describe "#group" do
 		context "if the group exists" do
 			it "returns the object" do
-				obj.group('group2a').should be_an_instance_of(XCodeProject::PBXGroup)
+				obj.group('group2a').should be_an_instance_of(XcodeProject::PBXGroup)
 			end
 		end
 		context "if the group doesn't exist" do
@@ -114,7 +114,7 @@ describe XCodeProject::PBXGroup do
 	describe "#file_ref" do
 		context "if the file reference exists" do
 			it "returns the object" do
-				obj.file_ref('file2c.m').should be_an_instance_of(XCodeProject::PBXFileReference)
+				obj.file_ref('file2c.m').should be_an_instance_of(XcodeProject::PBXFileReference)
 			end
 		end
 		context "if the file reference doesn't exist" do
@@ -127,12 +127,12 @@ describe XCodeProject::PBXGroup do
 	describe "#add_file_ref" do
 		context "if passed the relative path" do
 			it "adds the file reference, returns the object" do
-				obj.send(:add_file_ref, 'dir1b/file2b.m').should be_an_instance_of(XCodeProject::PBXFileReference)
+				obj.send(:add_file_ref, 'dir1b/file2b.m').should be_an_instance_of(XcodeProject::PBXFileReference)
 			end
 		end
 		context "if passed the absolute path" do
 			it "adds the file reference, returns the object" do
-				obj.send(:add_file_ref, "#{example_project_dir}/dir1b/file2b.m").should be_an_instance_of(XCodeProject::PBXFileReference)
+				obj.send(:add_file_ref, "#{example_project_dir}/dir1b/file2b.m").should be_an_instance_of(XcodeProject::PBXFileReference)
 			end
 		end
 		context "if file reference already exists" do
@@ -143,7 +143,7 @@ describe XCodeProject::PBXGroup do
 		end
 		context "if file doesn't exit" do
 			it "raise an exception " do
-				lambda { obj.send(:add_file_ref, "file2c_ghost.m") }.should raise_exception(XCodeProject::FilePathError)
+				lambda { obj.send(:add_file_ref, "file2c_ghost.m") }.should raise_exception(XcodeProject::FilePathError)
 			end
 		end
 	end
@@ -151,7 +151,7 @@ describe XCodeProject::PBXGroup do
 	describe "#add_group" do
 		it "adds the group, returns the object" do
 			group_obj = obj.add_group("group2a_ghost")
-			group_obj.should be_an_instance_of(XCodeProject::PBXGroup)
+			group_obj.should be_an_instance_of(XcodeProject::PBXGroup)
 			group_obj.group?.should eql(true)
 		end
 	end
@@ -159,7 +159,7 @@ describe XCodeProject::PBXGroup do
 	describe "#add_dir" do
 		it "adds the group, returns the object" do
 			group_obj = obj.add_dir("dir1c")
-			group_obj.should be_an_instance_of(XCodeProject::PBXGroup)
+			group_obj.should be_an_instance_of(XcodeProject::PBXGroup)
 			group_obj.dir?.should eql(true)
 		end
 		it "adds all dir's children" do
@@ -172,7 +172,7 @@ describe XCodeProject::PBXGroup do
 		end
 		context "if dir doesn't exit" do
 			it "raise an exception " do
-				lambda { obj.add_dir("dir2c_ghost") }.should raise_exception(XCodeProject::FilePathError)
+				lambda { obj.add_dir("dir2c_ghost") }.should raise_exception(XcodeProject::FilePathError)
 			end
 		end
 	end
@@ -180,7 +180,7 @@ describe XCodeProject::PBXGroup do
 	describe "#create_group" do
 		context "if passed a group name" do
 			it "creates and returns the group object" do
-				obj.create_group('group2a_ghost').should be_an_instance_of(XCodeProject::PBXGroup)
+				obj.create_group('group2a_ghost').should be_an_instance_of(XcodeProject::PBXGroup)
 			end
 		end
 		context "if passed a group path" do
@@ -190,7 +190,7 @@ describe XCodeProject::PBXGroup do
 					'group2a_ghost/group3a_ghost',
 					'group2a_ghost/../create_group2a_ghost/./group3a_ghost'
 				].each do |gpath|
-					obj.create_group(gpath).should be_an_instance_of(XCodeProject::PBXGroup)
+					obj.create_group(gpath).should be_an_instance_of(XcodeProject::PBXGroup)
 				end
 			end
 		end

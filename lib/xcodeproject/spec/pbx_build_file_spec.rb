@@ -1,13 +1,13 @@
 require "spec_helper"
 
-describe XCodeProject::PBXBuildFile do
+describe XcodeProject::PBXBuildFile do
 	let(:root)         { prepare_example_project.read.send(:root) }
 	let(:obj_file_ref) { root.project.main_group.file_ref("group1a/file2c.m") }
 	let(:obj)          { root.project.target('example').sources_build_phase.send(:build_file, obj_file_ref.uuid) }
 
 	describe "#file_ref" do
 		it "returns the object" do
-			obj.file_ref.should be_an_instance_of(XCodeProject::PBXFileReference)
+			obj.file_ref.should be_an_instance_of(XcodeProject::PBXFileReference)
 		end
 	end
 

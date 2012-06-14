@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe XCodeProject::XCConfigurationList do
+describe XcodeProject::XCConfigurationList do
 	before(:each) { @data = prepare_example_project.read }
 	let(:obj)     { obj = @data.target('example').build_configurations_list }
 
@@ -8,7 +8,7 @@ describe XCodeProject::XCConfigurationList do
 		let(:name) { 'Release' }
 		
 		it "returns build configuration object" do
-			obj.build_configuration(name).should be_an_instance_of(XCodeProject::XCBuildConfiguration)
+			obj.build_configuration(name).should be_an_instance_of(XcodeProject::XCBuildConfiguration)
 		end
 	end
 

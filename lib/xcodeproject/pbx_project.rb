@@ -1,6 +1,6 @@
 require 'xcodeproject/node'
 
-module XCodeProject
+module XcodeProject
 	class PBXProject < Node
 		attr_reader :main_group
 		attr_reader :product_ref_group

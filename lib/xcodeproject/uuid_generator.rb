@@ -1,6 +1,6 @@
 require 'uuid'
 
-module XCodeProject
+module XcodeProject
 	class UUIDGenerator
 		def initialize
 			@generator = UUID.new

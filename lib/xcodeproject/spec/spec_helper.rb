@@ -34,7 +34,7 @@ def prepare_example_project
 	%x{ rm -vr #{example_project_dir} }
 	%x{ cp -vr #{proj_source_dir} #{example_sandbox_path} }
 
-	XCodeProject::Project.new(example_project_bundle_path)
+	XcodeProject::Project.new(example_project_bundle_path)
 end
 
 def example_sandbox_path;        Pathname.new('/tmp/example_sandbox') end
