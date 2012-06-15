@@ -1,6 +1,8 @@
 XcodeProject
 ===
-Ruby API for working with Xcode project files
+The Ruby API for working with Xcode project files.
+
+[![Pledgie Badge][pledgie_img]][pledgie]
 
 Installation
 ---
@@ -132,4 +134,5 @@ XcodeProject is provided under the terms of the [the MIT license][license]
 
 [xcodebuilder]:https://github.com/lukeredpath/xcodebuild-rb
 [license]:http://www.opensource.org/licenses/MIT
-
+[pledgie]:http://pledgie.com/campaigns/17599
+[pledgie_img]:http://www.pledgie.com/campaigns/17599.png?skin_name=chrome
