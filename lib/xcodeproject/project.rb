@@ -20,14 +20,13 @@
 # IN THE SOFTWARE.
 #++
 
-require 'xcodeproject/builder'
+require 'xcodeproject/tasks/build_task'
 require 'xcodeproject/data'
 require 'pathname'
 require 'find'
 
 module XcodeProject
 	class Project
-		attr_reader :builder
 		attr_reader :bundle_path
 		attr_reader :file_path
 		attr_reader :name
@@ -47,12 +46,6 @@ module XcodeProject
 			@bundle_path = path
 			@file_path = bundle_path.join('project.pbxproj')
 			@name = bundle_path.basename('.*').to_s
-			
-			@builder = Builder.new do |t|
-				t.project_name = path.basename
-				t.invoke_from_within = path.dirname
-				t.formatter = XcodeBuild::Formatters::ProgressFormatter.new
-			end
 		end
 
 		def change
@@ -69,18 +62,6 @@ module XcodeProject
 			File.open(file_path, "w") do |file|
 				file.write(data.to_plist)
 			end
-		end
-
-		def build
-			builder.build
-		end
-
-		def clean
-			builder.clean
-		end
-
-		def archive
-			builder.archive
 		end
 
 		def doctor

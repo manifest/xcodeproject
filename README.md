@@ -105,26 +105,30 @@ Or remove from target's build phase:
 
 Building the project
 ---
-XcodeProject uses XcodeBuilder for building projects
+XcodeProject uses Rake and XcodeBuilder for building projects.
 
-Building the project:
+You need to create a `rakefile`, a simple look like this:
 
-	proj.build
+	require 'rubygems'
+	require 'xcodeproject'
 
-Cleaning the project:
+	proj = XcodeProject::Project.new('path/to/example.xcodeproj')
+	XcodeProject::Tasks::BuildTask.new(proj)
 
-	proj.clean
+You will now have access to a variety of tasks such as clean and build. A full list of tasks can be viewed by running `rake -T`:
 
-Archiving the project:
+	$ rake -T
+	rake example:archive            # Creates an archive build of the specified target(s).
+	rake example:build              # Builds the specified target(s).
+	rake example:clean              # Cleans the build using the same build settings.
+	rake example:cleanbuild         # Builds the specified target(s) from a clean slate.
 
-	proj.builder.scheme = 'example'
-	proj.archive
+Configuring your tasks:
 
-You can specify options for builder:
-
-	proj.builder.configuration = 'Debug'
-	proj.builder.arch = 'armv7'
-	proj.build
+	XcodeProject::Tasks::BuildTask.new(proj) do
+		t.target = "libexample"
+		t.configuration = "Release"
+	end
 
 You can find out more about XcodeBuilder [here][xcodebuilder].
 
