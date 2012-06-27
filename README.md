@@ -70,7 +70,7 @@ Or from the current group:
 	
 	group.add_group('path/from/current_group')
 
-To add a directory to the project, you must specify the file path to it:
+To add a directory to the project, you must specify the file path:
 
 	data.add_dir('group_path/to/parent', '/file_path/to/dir')
 	group.add_dir('/file_path/to/dir')
@@ -125,7 +125,7 @@ You will now have access to a variety of tasks such as clean and build. A full l
 
 Configuring your tasks:
 
-	XcodeProject::Tasks::BuildTask.new(proj) do
+	XcodeProject::Tasks::BuildTask.new(proj) do |t|
 		t.target = "libexample"
 		t.configuration = "Release"
 	end
