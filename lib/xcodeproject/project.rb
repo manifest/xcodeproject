@@ -31,12 +31,11 @@ module XcodeProject
 		attr_reader :file_path
 		attr_reader :name
 
-		def self.find_projs (path)
-			projs = []
-			Find.find path do |path|
-				projs.push(Project.new(path)) if path =~ /\A.*\.xcodeproj\z/
-			end
-			projs
+		def self.find (pattern)
+			pattern = Pathname.new(pattern)
+			pattern.join('*.xcodeproj') if pattern.extname != '.xcodeproj'
+
+			Dir[ pattern ].map {|path| self.new(path) }
 		end
 
 		def initialize (path)
