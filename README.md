@@ -26,11 +26,11 @@ First, you must create an XcodeProject::Project object like this:
 
 Or you can find all projects are located in the specified directory:
 
-	projs = XcodeProject::Project.find_projs('path/to/dir')
+	projs = XcodeProject::Project.find('path/to/dir')
 
 Or by specified directory pattern:
 
-	projs = XcodeProject::Project.find_projs('*/**')
+	projs = XcodeProject::Project.find('*/**')
 
 After creating the project object, you can read the data from it:
 
