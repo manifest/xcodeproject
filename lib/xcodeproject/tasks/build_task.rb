@@ -5,8 +5,9 @@ module XcodeProject
 		class BuildTask < XcodeBuild::Tasks::BuildTask
 			attr_accessor :with_build_opts
 
-			def initialize (project, &block)
-				super(project.name, &block)
+			def initialize (project, namespace = nil, &block)
+				namespace ||= project.name
+				super(namespace, &block)
 
 				@with_build_opts  ||= []
 				@formatter        ||= XcodeBuild::Formatters::ProgressFormatter.new
