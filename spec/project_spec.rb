@@ -30,18 +30,26 @@ describe XcodeProject::Project do
 		end
 	end
 
-	describe "#find_projs" do
-		context "if a path contains project files" do
+	describe "#find" do
+		context "if a specified directory contains project files" do
 			it "returns an array of project objects" do
-				projs = XcodeProject::Project.find_projs(example_sandbox_path)
+				projs = XcodeProject::Project.find(example_project_bundle_path)
+				projs.size.should eql(1)
+				projs.first.bundle_path.should eql(proj.bundle_path)
+			end
+		end
+		
+		context "if a specified directory pattern contains project files" do
+			it "returns an array of project objects" do
+				projs = XcodeProject::Project.find("#{example_sandbox_path}/*")
 				projs.size.should eql(1)
 				projs.first.bundle_path.should eql(proj.bundle_path)
 			end
 		end
 
-		context "if a path doesn't contain project files" do
+		context "if a specified directory doesn't contain project files" do
 			it "returns an empty array" do
-				projs = XcodeProject::Project.find_projs(example_empty_sandbox_path)
+				projs = XcodeProject::Project.find(example_empty_sandbox_path)
 				projs.size.should eql(0)
 			end
 		end

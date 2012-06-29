@@ -31,9 +31,9 @@ module XcodeProject
 		attr_reader :file_path
 		attr_reader :name
 
-		def self.find (pattern)
-			pattern = Pathname.new(pattern)
-			pattern.join('*.xcodeproj') if pattern.extname != '.xcodeproj'
+		def self.find (pattern = nil)
+			pattern = Pathname.new(pattern.to_s)
+			pattern = pattern.join('*.xcodeproj') if pattern.extname != '.xcodeproj'
 
 			Dir[ pattern ].map {|path| self.new(path) }
 		end

@@ -28,6 +28,10 @@ Or you can find all projects are located in the specified directory:
 
 	projs = XcodeProject::Project.find_projs('path/to/dir')
 
+Or by specified directory pattern:
+
+	projs = XcodeProject::Project.find_projs('*/**')
+
 After creating the project object, you can read the data from it:
 
 	data = proj.read
