@@ -246,6 +246,20 @@ describe XcodeProject::PBXGroup do
 		end
 	end
 
+	describe "#remove_file_ref" do
+		context "if the file reference exists" do
+			it "removes the object" do
+				obj.remove_file_ref('group1a/file2c.m')
+				obj.file_ref('group1a/file2c.m').should be_nil
+			end
+		end
+		context "if the file reference doesn't exist" do
+			it "returns nil" do
+				obj.remove_file_ref('group1a/file2c_ghost.m').should be_nil
+			end
+		end
+	end
+
 	describe "#remove_group" do
 		context "if the group exists" do
 			it "removes the object" do

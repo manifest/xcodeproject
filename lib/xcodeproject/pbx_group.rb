@@ -122,6 +122,11 @@ module XcodeProject
 			path.relative? ? path : path.relative_path_from(total_path)
 		end
 
+		def remove_file_ref (gpath)
+			obj = file(gpath)
+			obj.remove! unless obj.nil?
+		end
+
 		def remove_group (gpath)
 			obj = group(gpath)
 			obj.remove! unless obj.nil?
@@ -155,8 +160,9 @@ module XcodeProject
 			PBXGroup.new(root, uuid, data)
 		end
 
-		alias :file     :file_ref
-		alias :add_file :add_file_ref
+		alias :file        :file_ref
+		alias :add_file    :add_file_ref
+		alias :remove_file :remove_file_ref
 
 	private
 
