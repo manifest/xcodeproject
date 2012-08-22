@@ -34,7 +34,10 @@ require 'xcodeproject/extend/hash'
 module XcodeProject
 	class RootNode
 		def initialize (data, wd)
-			@data, @wd = data, Pathname.new(wd)
+			@data = data
+
+			@wd = Pathname.new(wd)
+			@wd = Pathname.new(ENV['PWD']).join(@wd) if @wd.relative?
 
 			@objects = data['objects']
 			@uuid_generator = UUIDGenerator.new
