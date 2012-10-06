@@ -14,7 +14,7 @@ module XcodeProject
 			@name = data['name']
 			@build_settings = data['buildSettings']
 			
-			@plist = PListAccessor.new(@build_settings['INFOPLIST_FILE'])
+			@plist = Util::PListAccessor.new(plist_path)
 		end
 
 		def version (type = :major)
@@ -42,6 +42,12 @@ module XcodeProject
 			nv = cv.nil? ? '0' : cv.next
 
 			change_version(nv, type)
+		end
+
+	private
+
+		def plist_path
+			root.absolute_path(@build_settings['INFOPLIST_FILE'])
 		end
 
 	end

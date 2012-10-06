@@ -86,23 +86,4 @@ describe XcodeProject::XCBuildConfiguration do
 			end
 		end
 	end
-
-	describe "#read_property" do
-		let(:key) { 'CFBundleShortVersionString' }
-		let(:value) { '1.0' }
-
-		it "read a property by key from plist file" do
-			obj.send(:read_property, key).should eql(value)
-		end
-	end
-
-	describe "#write_property" do
-		let(:key)   { 'CFBundleShortVersionString' }
-		let(:value) { '1.1' }
-
-		it "write value by key to plist file" do
-			obj.send(:write_property, key, value)
-			obj.send(:read_property, key).should eql(value)
-		end
-	end
 end
