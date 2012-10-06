@@ -83,5 +83,11 @@ describe XcodeProject::Project do
 			proj.change {|data| }
 		end
 	end
+
+	describe "#build_settings" do
+		it "represents the build settings as hash" do
+			proj.build_settings['TARGET_NAME'].should eql('example')
+		end
+	end
 end
 

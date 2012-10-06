@@ -66,5 +66,10 @@ module XcodeProject
 		def doctor
 			change {|data| data.doctor }
 		end
+
+		def build_settings
+			data = `xcodebuild -showBuildSettings -project #{@bundle_path}`
+			Hash[ data.scan(/^\s+(\w+)\s+=\s+(.+)$/) ]
+		end
 	end
 end
