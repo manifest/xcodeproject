@@ -83,19 +83,5 @@ describe XcodeProject::Project do
 			proj.change {|data| }
 		end
 	end
-
-	describe "#build_settings" do
-		context "without agruments" do
-			it "represents the default build settings as hash" do
-				proj.build_settings['TARGET_NAME'].should eql('example')
-			end
-		end
-
-		context "with 'opts' argument" do
-			it "represents the build settings as hash" do
-				proj.build_settings('-configuration Debug')['CONFIGURATION'].should eql('Debug')
-			end
-		end
-	end
 end
 
