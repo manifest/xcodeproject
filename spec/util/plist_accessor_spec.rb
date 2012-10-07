@@ -7,7 +7,7 @@ describe XcodeProject::Util::PListAccessor do
 	end
 
 	let(:build_settings) { XcodeBuild.build_settings("-project #{@proj.bundle_path}") }
-	let(:obj)						 { @data.target('example').config('Release').plist }
+	let(:obj)            { @data.target('example').config('Release').plist }
 
 	describe "#read_property" do
 		let(:key) { 'CFBundleIdentifier' }
