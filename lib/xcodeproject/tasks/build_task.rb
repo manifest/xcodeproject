@@ -12,7 +12,6 @@ module XcodeProject
 
 				@project_name       = project.bundle_path.basename.to_s
 				@invoke_from_within = project.bundle_path.dirname
-				@formatter          ||= XcodeBuild::Formatters::ProgressFormatter.new
 
 				unless @build_to.nil?
 					@build_tmp_to ||= Pathname.new(@build_to).join('.tmp')
