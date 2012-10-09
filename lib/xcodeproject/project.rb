@@ -20,7 +20,6 @@
 # IN THE SOFTWARE.
 #++
 
-require 'xcodeproject/tasks/build_task'
 require 'xcodeproject/data'
 require 'pathname'
 require 'find'
