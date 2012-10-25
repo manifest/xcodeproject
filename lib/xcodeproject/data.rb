@@ -1,5 +1,5 @@
 #--
-# Copyright 2012 by Andrey Nesterov (ae.nesterov@gmail.com)
+# Copyright 2012 by Andrei Nesterov (ae.nesterov@gmail.com)
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to

@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  example
-//
-//  Created by Andrey Nesterov on 02.06.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "AppDelegate.h"
 
 @implementation AppDelegate

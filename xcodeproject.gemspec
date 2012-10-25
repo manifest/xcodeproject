@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
 	gem.version           = XcodeProject::VERSION
 	gem.summary           = 'Read, write and build xcode projects'
 	gem.description       = 'XcodeProject is the Ruby API for working with Xcode project files'
-	gem.author            = 'Andrey Nesterov'
+	gem.author            = 'Andrei Nesterov'
 	gem.email             = 'ae.nesterov@gmail.com'
 	gem.homepage          = 'https://github.com/manifest/xcodeproject'
 	gem.rubyforge_project = 'xcodeproject'
@@ -18,6 +18,7 @@ Gem::Specification.new do |gem|
 	gem.require_paths     = ["lib"]
 
 	gem.required_ruby_version = '>= 1.8.7'
+	gem.add_runtime_dependency 'rake', '>= 0.8.7'
 	gem.add_runtime_dependency 'json', '~> 1.7.5'
 	gem.add_runtime_dependency 'uuid', '~> 2.3.5'
 	gem.add_runtime_dependency 'xcodebuild-rb', '~> 0.2.0'
