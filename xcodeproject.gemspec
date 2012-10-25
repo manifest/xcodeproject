@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
 	gem.version           = XcodeProject::VERSION
 	gem.summary           = 'Read, write and build xcode projects'
 	gem.description       = 'XcodeProject is the Ruby API for working with Xcode project files'
-	gem.author            = 'Andrey Nesterov'
+	gem.author            = 'Andrei Nesterov'
 	gem.email             = 'ae.nesterov@gmail.com'
 	gem.homepage          = 'https://github.com/manifest/xcodeproject'
 	gem.rubyforge_project = 'xcodeproject'
