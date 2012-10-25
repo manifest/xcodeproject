@@ -4,9 +4,6 @@
 .Spotlight-V100
 .Trashes
 
-# .gitignore
-.gitignore
-
 # vim
 .*.sw[a-z]
 *.un~

@@ -4,6 +4,8 @@ The Ruby API for working with Xcode project files.
 
 [![Pledgie Badge][pledgie_img]][pledgie]
 
+[![Build Status][travis_img]][travis]
+
 Installation
 ---
 `gem install xcodeproject`
@@ -144,3 +146,5 @@ XcodeProject is provided under the terms of the [the MIT license][license]
 [license]:http://www.opensource.org/licenses/MIT
 [pledgie]:http://pledgie.com/campaigns/17599
 [pledgie_img]:http://www.pledgie.com/campaigns/17599.png?skin_name=chrome
+[travis]:http://travis-ci.org/manifest/xcodeproject
+[travis_img]:https://secure.travis-ci.org/manifest/xcodeproject.png
