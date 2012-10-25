@@ -1,4 +1,5 @@
 require "spec_helper"
+require "xcodebuild"
 
 describe XcodeProject::Util::PListAccessor do
 	before(:each) do
