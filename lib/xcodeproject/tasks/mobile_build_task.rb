@@ -3,7 +3,7 @@ require 'xcodeproject/tasks/debian_package_task'
 
 module XcodeProject
 	module Tasks
-		class CydiaTask < BuildTask
+		class MobileBuildTask < BuildTask
 			include DebianPackageTask
 		end
 	end
