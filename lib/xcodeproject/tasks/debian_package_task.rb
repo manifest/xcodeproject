@@ -57,6 +57,7 @@ module XcodeProject
 					desc "Cleans the debian package build using the same build settings."
 					task :clean_deb => [:clean] do
 						clean = FileList.new
+						clean.include(deb_path)
 						clean.include(package_dir)
 						clean.each {|fn| rm_r fn rescue nil }
 					end
