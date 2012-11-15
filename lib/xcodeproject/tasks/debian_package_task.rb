@@ -40,9 +40,7 @@ module XcodeProject
 						@deb_opts['Name']         ||= deb_name
 						@deb_opts['Package']      ||= app_id
 						@deb_opts['Version']      ||= app_v
-						@deb_opts['Homepage']     ||= app_id.split('.')[0..1].reverse.join('.')
 						@deb_opts['Architecture'] ||= 'iphoneos-arm'
-						@deb_opts['Section']      ||= 'Games'
 
 						# creating deb package source derictories
 						`cp -fr "#{app_path}" "#{package_apps_dir}"`
