@@ -4,6 +4,7 @@ module XcodeProject
 	module Tasks
 		module DebianPackageTask
 			attr_accessor :deb_opts
+			attr_accessor :deb_scripts
 
 			def define
 				super
@@ -34,13 +35,13 @@ module XcodeProject
 						plist     = @project.read.target(bs['TARGET_NAME']).config(bs['CONFIGURATION']).plist
 						app_v     = plist.read_property('CFBundleShortVersionString', bs)
 						app_id    = plist.read_property('CFBundleIdentifier', bs)
-						
+
 						@deb_opts ||= Hash.new
-						@deb_opts.map {|setting, value| setting.capitalize }
-						@deb_opts['Name']         ||= deb_name
-						@deb_opts['Package']      ||= app_id
-						@deb_opts['Version']      ||= app_v
-						@deb_opts['Architecture'] ||= 'iphoneos-arm'
+						@deb_opts = Hash[ @deb_opts.map {|key, value| [key.to_s.downcase, value] } ]
+						@deb_opts['name']         ||= deb_name
+						@deb_opts['package']      ||= app_id
+						@deb_opts['version']      ||= app_v
+						@deb_opts['architecture'] ||= 'iphoneos-arm'
 
 						# creating deb package source derictories
 						`cp -fr "#{app_path}" "#{package_apps_dir}"`
@@ -48,6 +49,18 @@ module XcodeProject
 						# creating control file
 						package_debian_dir.join('control').open('w') do |f|
 							@deb_opts.each {|key, value| f.puts("#{key}: #{value}") }
+						end
+
+						# creating {pre|post}{inst|rm} scripts
+						@deb_scripts.each do |type, body|
+							type = type.to_s
+							raise ArgumentError.new("Wrong deb script type: '#{type}'.") unless %w( preinst postinst prerm postrm ).include?(type)
+
+							path = package_debian_dir.join(type)
+							path.open('w') do |f|
+								f.puts(body)
+							end
+							path.chmod(0555)
 						end
 
 						# this hack is needed
