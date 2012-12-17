@@ -54,7 +54,7 @@ module XcodeProject
 			data = []
 			data << ['isa', 'PBXFileReference']
 			data << ['sourceTree', '<group>']
-			data << ['fileEncoding', '4'] # utf-8
+			# data << ['fileEncoding', '4'] # utf-8
 			data << ['lastKnownFileType', FileTypeMap[ext]]
 			data << ['path', path]
 			data << ['name', name] if name != path
@@ -69,7 +69,13 @@ module XcodeProject
 			'.mm'  => 'sourcecode.cpp.objcpp',
 			'.hpp' => 'sourcecode.cpp.h',
 			'.cpp' => 'sourcecode.cpp.cpp',
-			'.cc'  => 'sourcecode.cpp.cpp'
+			'.cc'  => 'sourcecode.cpp.cpp',
+			'.mp3' => 'audio.mp3',
+			'.png' => 'image.png',
+			'jpeg' => 'image.jpeg',
+			'jpg'  => 'image.jpeg',
+			'.fnt' => 'text',
+			'.txt' => 'text'
 		}
 	end
 end
