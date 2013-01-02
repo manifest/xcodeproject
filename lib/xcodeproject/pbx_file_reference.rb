@@ -72,8 +72,8 @@ module XcodeProject
 			'.cc'  => 'sourcecode.cpp.cpp',
 			'.mp3' => 'audio.mp3',
 			'.png' => 'image.png',
-			'jpeg' => 'image.jpeg',
-			'jpg'  => 'image.jpeg',
+			'.jpeg' => 'image.jpeg',
+			'.jpg'  => 'image.jpeg',
 			'.fnt' => 'text',
 			'.txt' => 'text'
 		}
