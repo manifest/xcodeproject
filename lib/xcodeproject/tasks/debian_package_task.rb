@@ -9,7 +9,7 @@ module XcodeProject
 			def define
 				super
 
-				bs = build_settings
+				bs = xcode_build_settings[target]
 				raise StandardError.new("You need to specify a `INFOPLIST_PATH' in order to be able to build debian package!") if bs['INFOPLIST_PATH'].nil?
 
 				plist     = @project.read.target(bs['TARGET_NAME']).config(bs['CONFIGURATION']).plist
@@ -29,7 +29,7 @@ module XcodeProject
 
 					file deb_path => [package_apps_dir.to_s, package_debian_dir.to_s] do
 						# reading actual build settings
-						bs        = build_settings
+						bs        = xcode_build_settings[target]
 						raise StandardError.new("You need to specify a `INFOPLIST_PATH' in order to be able to build debian package!") if bs['INFOPLIST_PATH'].nil?
 
 						plist     = @project.read.target(bs['TARGET_NAME']).config(bs['CONFIGURATION']).plist
@@ -74,8 +74,8 @@ module XcodeProject
 					desc "Cleans the debian package build using the same build settings."
 					task :clean_deb => [:clean] do
 						clean = FileList.new
-						clean.include(deb_path)
-						clean.include(package_dir)
+						clean.include(deb_path.to_s)
+						clean.include(package_dir.to_s)
 						clean.each {|fn| rm_r fn rescue nil }
 					end
 

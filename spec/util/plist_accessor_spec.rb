@@ -23,7 +23,7 @@ describe XcodeProject::Util::PListAccessor do
 		context "with key and hash arguments" do
 			let(:value) { 'org.yanot.example' }
 			it "reads a property by key from plist file and replace placeholders" do
-				obj.read_property(key, build_settings).should eql(value)
+				obj.read_property(key, build_settings['example']).should eql(value)
 			end
 		end
 	end
@@ -44,7 +44,7 @@ describe XcodeProject::Util::PListAccessor do
 		
 		it "replaces placeholders in the plist property" do
 			text = obj.read_property(key)
-			obj.replace_placeholders(text, build_settings).should eql(value)
+			obj.replace_placeholders(text, build_settings['example']).should eql(value)
 		end
 	end
 end
