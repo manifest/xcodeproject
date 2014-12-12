@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
 
 	gem.required_ruby_version = '>= 1.8.7'
 	gem.add_runtime_dependency 'rake', '>= 0.8.7'
-	gem.add_runtime_dependency 'json', '~> 1.7.5'
+	gem.add_runtime_dependency 'json', '~> 1.8.0'
 	gem.add_runtime_dependency 'uuid', '~> 2.3.5'
 	gem.add_runtime_dependency 'xcodebuild-rb', '~> 0.2.0'
 	gem.add_development_dependency 'rspec', '~> 2.0'
@@ -27,4 +27,3 @@ Gem::Specification.new do |gem|
 	gem.add_development_dependency 'redcarpet', '~> 2.1.1'
 	gem.add_development_dependency 'yard', '~> 0.8.2'
 end
-
