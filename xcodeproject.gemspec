@@ -17,10 +17,10 @@ Gem::Specification.new do |gem|
 	gem.test_files        = gem.files.grep(%r{^(test|spec|features)/})
 	gem.require_paths     = ["lib"]
 
-	gem.required_ruby_version = '>= 1.8.7'
-	gem.add_runtime_dependency 'rake', '>= 0.8.7'
-	gem.add_runtime_dependency 'json', '~> 1.7.5'
-	gem.add_runtime_dependency 'uuid', '~> 2.3.5'
+	gem.required_ruby_version = '>= 2.0.0'
+	gem.add_runtime_dependency 'rake', '>= 10.0'
+	gem.add_runtime_dependency 'json', '~> 1.8'
+	gem.add_runtime_dependency 'uuid', '~> 2.3'
 	gem.add_runtime_dependency 'xcodebuild-rb', '~> 0.2.0'
 	gem.add_development_dependency 'rspec', '~> 2.0'
 	gem.add_development_dependency 'rr', '~> 1.0.4'
