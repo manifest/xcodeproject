@@ -1,5 +1,7 @@
 #--
-# Copyright 2012 by Andrei Nesterov (ae.nesterov@gmail.com)
+# The MIT License
+#
+# Copyright (c) 2012-2014 Andrei Nesterov <ae.nesterov@gmail.com>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
