@@ -72,6 +72,7 @@ module XcodeProject
 			'.hpp' => 'sourcecode.cpp.h',
 			'.cpp' => 'sourcecode.cpp.cpp',
 			'.cc'  => 'sourcecode.cpp.cpp',
+			'.swift' => 'sourcecode.swift',
 			'.mp3' => 'audio.mp3',
 			'.png' => 'image.png',
 			'.jpeg' => 'image.jpeg',
