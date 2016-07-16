@@ -5,14 +5,14 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require 'xcodeproject/project'
-require 'xcodeproject/exceptions'
-require 'rr' 
+require 'rr'
+require_relative '../lib/xcodeproject/project'
+require_relative '../lib/xcodeproject/exceptions'
+require_relative 'support/shared_examples/file_node_shared_examples'
 
 RSpec.configure do |config|
-	config.treat_symbols_as_metadata_keys_with_true_values = true
-	config.run_all_when_everything_filtered = true
-	config.filter_run :focus
+  config.run_all_when_everything_filtered = true
+  config.filter_run :focus
   config.mock_with :rr
 end
 
@@ -33,22 +33,35 @@ end
 #    \--file2c.h
 
 def prepare_sandbox
-	%x{ mkdir -p #{example_sandbox_path} } unless File.exist?(example_sandbox_path)
+  ` mkdir -p #{example_sandbox_path} ` unless File.exist?(example_sandbox_path)
 end
 
 def prepare_example_project
-	prepare_sandbox
+  prepare_sandbox
 
-	proj_source_dir = "#{File.dirname(__FILE__)}/../resources/example"
-	%x{ rm -vr #{example_project_dir} }
-	%x{ cp -vr #{proj_source_dir} #{example_sandbox_path} }
+  proj_source_dir = "#{File.dirname(__FILE__)}/../resources/example"
+  ` rm -vr #{example_project_dir} `
+  ` cp -vr #{proj_source_dir} #{example_sandbox_path} `
 
-	XcodeProject::Project.new(example_project_bundle_path)
+  XcodeProject::Project.new(example_project_bundle_path)
 end
 
-def example_sandbox_path;        Pathname.new('/tmp/example_sandbox') end
-def example_empty_sandbox_path;  Pathname.new('/tmp/example_sandbox_empty') end
-def example_project_dir;         example_sandbox_path.join('example') end
-def example_project_bundle_path; example_project_dir.join('example.xcodeproj') end
-def example_project_file_path;   example_project_bundle_path.join('project.pbxproj') end
+def example_sandbox_path
+  Pathname.new('/tmp/example_sandbox')
+end
 
+def example_empty_sandbox_path
+  Pathname.new('/tmp/example_sandbox_empty')
+end
+
+def example_project_dir
+  example_sandbox_path.join('example')
+end
+
+def example_project_bundle_path
+  example_project_dir.join('example.xcodeproj')
+end
+
+def example_project_file_path
+  example_project_bundle_path.join('project.pbxproj')
+end

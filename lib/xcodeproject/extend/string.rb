@@ -25,7 +25,7 @@
 require 'json'
 
 class String
-	def to_plist (fmtr = nil)
-		to_json
-	end
+  def to_plist(_fmtr = nil)
+    to_json
+  end
 end

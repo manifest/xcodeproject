@@ -1,3 +1,2 @@
 require 'xcodeproject/project'
-require "xcodeproject/version"
-
+require 'xcodeproject/version'
