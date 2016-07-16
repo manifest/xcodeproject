@@ -2,7 +2,7 @@
 require File.expand_path('../lib/xcodeproject/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name = 'xcodeproject'
+  gem.name = 'xcodeproject_swift'
   gem.version           = XcodeProject::VERSION
   gem.summary           = 'Read, write and build xcode projects'
   gem.description       = 'XcodeProject is the Ruby API for working with Xcode project files'
