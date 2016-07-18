@@ -25,65 +25,65 @@
 require 'xcodeproject/root_node'
 
 module XcodeProject
-	class Data
-		def initialize (data, wd)
-			@root = RootNode.new(data, wd)
-		end
+  class Data
+    def initialize(data, wd)
+      @root = RootNode.new(data, wd)
+    end
 
-		def project
-			@root.project
-		end
+    def project
+      @root.project
+    end
 
-		def targets
-			project.targets
-		end
+    def targets
+      project.targets
+    end
 
-		def target (name)
-			project.target(name)
-		end
+    def target(name)
+      project.target(name)
+    end
 
-		def main_group
-			project.main_group
-		end
+    def main_group
+      project.main_group
+    end
 
-		def group (gpath)
-			main_group.group(gpath)
-		end
+    def group(gpath)
+      main_group.group(gpath)
+    end
 
-		def add_group (gpath)
-			main_group.add_group(gpath)
-		end
+    def add_group(gpath)
+      main_group.add_group(gpath)
+    end
 
-		def add_dir(parent_gpath, path)
-			main_group.add_group(parent_gpath).add_dir(path)
-		end
+    def add_dir(parent_gpath, path)
+      main_group.add_group(parent_gpath).add_dir(path)
+    end
 
-		def remove_group (gpath)
-			main_group.remove_group(gpath)
-		end
-		
-		def file (gpath)
-			main_group.file(gpath)
-		end
+    def remove_group(gpath)
+      main_group.remove_group(gpath)
+    end
 
-		def add_file (parent_gpath, path)
-			main_group.add_group(parent_gpath).add_file(path)
-		end
+    def file(gpath)
+      main_group.file(gpath)
+    end
 
-		def remove_file (gpath)
-			main_group.remove_file(gpath)
-		end
+    def add_file(parent_gpath, path)
+      main_group.add_group(parent_gpath).add_file(path)
+    end
 
-		def doctor
-			targets.each {|target| target.doctor }
-		end
+    def remove_file(gpath)
+      main_group.remove_file(gpath)
+    end
 
-		def to_plist (fmtr = Formatter.new)
-			@root.to_plist
-		end
+    def doctor
+      targets.each(&:doctor)
+    end
 
-	private
-		attr_accessor :root
+    def to_plist(_fmtr = Formatter.new)
+      @root.to_plist
+    end
 
-	end
+    private
+
+    attr_accessor :root
+  end
 end

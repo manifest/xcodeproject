@@ -28,45 +28,45 @@ require 'pathname'
 require 'find'
 
 module XcodeProject
-	class Project
-		attr_reader :bundle_path
-		attr_reader :file_path
-		attr_reader :name
+  class Project
+    attr_reader :bundle_path
+    attr_reader :file_path
+    attr_reader :name
 
-		def self.find (pattern = nil)
-			pattern = Pathname.new(pattern.to_s)
-			pattern = pattern.join('*.xcodeproj') if pattern.extname != '.xcodeproj'
+    def self.find(pattern = nil)
+      pattern = Pathname.new(pattern.to_s)
+      pattern = pattern.join('*.xcodeproj') if pattern.extname != '.xcodeproj'
 
-			Dir[ pattern ].map {|path| self.new(path) }
-		end
+      Dir[pattern].map { |path| new(path) }
+    end
 
-		def initialize (path)
-			path = Pathname.new(path)
-			raise FilePathError.new("No such project file '#{path}'.") unless path.exist?
+    def initialize(path)
+      path = Pathname.new(path)
+      raise FilePathError, "No such project file '#{path}'." unless path.exist?
 
-			@bundle_path = path
-			@file_path = bundle_path.join('project.pbxproj')
-			@name = bundle_path.basename('.*').to_s
-		end
+      @bundle_path = path
+      @file_path = bundle_path.join('project.pbxproj')
+      @name = bundle_path.basename('.*').to_s
+    end
 
-		def change
-			data = read
-			yield data
-			write data
-		end
+    def change
+      data = read
+      yield data
+      write data
+    end
 
-		def read
-			Data.new(JSON.parse(`plutil -convert json -o - "#{file_path}"`), bundle_path.dirname)
-		end
+    def read
+      Data.new(JSON.parse(`plutil -convert json -o - "#{file_path}"`), bundle_path.dirname)
+    end
 
-		def write (data)
-			File.open(file_path, "w") do |file|
-				file.write(data.to_plist)
-			end
-		end
+    def write(data)
+      File.open(file_path, 'w') do |file|
+        file.write(data.to_plist)
+      end
+    end
 
-		def doctor
-			change {|data| data.doctor }
-		end
-	end
+    def doctor
+      change(&:doctor)
+    end
+  end
 end

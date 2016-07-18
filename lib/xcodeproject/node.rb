@@ -23,17 +23,20 @@
 #++
 
 module XcodeProject
-	class Node
-		attr_reader :uuid
-		attr_reader :isa
+  class Node
+    attr_reader :uuid
+    attr_reader :isa
 
-		def initialize (root, uuid, data)
-			@root, @uuid, @data = root, uuid, data
-			@isa = data['isa']
-		end
-		
-		protected
-			attr_accessor :root
-			attr_accessor :data
-	end
+    def initialize(root, uuid, data)
+      @root = root
+      @uuid = uuid
+      @data = data
+      @isa = data['isa']
+    end
+
+    protected
+
+    attr_accessor :root
+    attr_accessor :data
+  end
 end

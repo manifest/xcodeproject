@@ -1,20 +1,23 @@
-require "spec_helper"
+require_relative 'spec_helper'
 
 describe XcodeProject::XCConfigurationList do
-	before(:each) { @data = prepare_example_project.read }
-	let(:obj)     { obj = @data.target('example').build_configurations_list }
+  let(:obj) { @data.target('example').build_configurations_list }
 
-	describe "#build_configuration" do
-		let(:name) { 'Release' }
-		
-		it "returns build configuration object" do
-			obj.build_configuration(name).should be_an_instance_of(XcodeProject::XCBuildConfiguration)
-		end
-	end
+  before(:each) do
+    @data = prepare_example_project.read
+  end
 
-	describe "#build_configurations" do
-		it "returns an array of build configuration objects" do
-			obj.build_configurations.should be_an_instance_of(Array)
-		end
-	end
+  describe '#build_configuration' do
+    let(:name) { 'Release' }
+
+    it 'returns build configuration object' do
+      expect(obj.build_configuration(name)).to be_a(XcodeProject::XCBuildConfiguration)
+    end
+  end
+
+  describe '#build_configurations' do
+    it 'returns an array of build configuration objects' do
+      expect(obj.build_configurations).to be_a(Array)
+    end
+  end
 end

@@ -1,0 +1,37 @@
+Documentation:
+  Enabled: false
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+Style/IndentHash:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Style/MultilineTernaryOperator:
+  Enabled: false
+Style/MutableConstant:
+  Enabled: false
+Style/NumericLiterals:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': '[]'
+    '%w': '[]'
+    '%W': '[]'
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Lint/EndAlignment:
+  AlignWith: variable
+Metrics/BlockNesting:
+  Enabled: false
+Metrics/LineLength:
+  Max: 140
+Metrics/MethodLength:
+  Max: 25
+Metrics/ClassLength:
+  Max: 150
+Metrics/CyclomaticComplexity:
+  Max: 10
+Metrics/AbcSize:
+  Max: 40

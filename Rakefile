@@ -8,5 +8,4 @@ require 'yard'
 RSpec::Core::RakeTask.new
 YARD::Rake::YardocTask.new
 
-task :default => :build
-
+task default: :build
